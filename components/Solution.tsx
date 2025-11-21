@@ -15,19 +15,19 @@ const Solution: React.FC = () => {
     ];
 
     return (
-        <section id="solution" className="py-20 sm:py-32 bg-slate-900 overflow-hidden">
+        <section id="solution" className="py-12 sm:py-20 bg-slate-900 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left Column: Coded App Mockup */}
                     <div className="relative animate-fade-in-up flex justify-center order-2 lg:order-1">
-                         {/* Ambient Glow Effect */}
-                         <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-30 blur-3xl animate-pulse"></div>
-                         
-                         {/* Phone Frame */}
-                         <div className="relative w-[280px] sm:w-[320px] bg-slate-950 rounded-[3rem] border-[8px] border-slate-900 shadow-2xl overflow-hidden ring-1 ring-white/10 z-10">
+                        {/* Ambient Glow Effect */}
+                        <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-30 blur-3xl animate-pulse"></div>
+
+                        {/* Phone Frame */}
+                        <div className="relative w-[280px] sm:w-[320px] bg-slate-950 rounded-[3rem] border-[8px] border-slate-900 shadow-2xl overflow-hidden ring-1 ring-white/10 z-10">
                             {/* Notch */}
                             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-6 w-32 bg-slate-900 rounded-b-xl z-30"></div>
-                            
+
                             {/* Screen Content */}
                             <div className="h-[580px] bg-gradient-to-b from-slate-900 to-slate-950 relative flex flex-col">
                                 {/* App Status Bar */}
@@ -68,7 +68,7 @@ const Solution: React.FC = () => {
                                 {/* Queue Timeline */}
                                 <div className="flex-1 px-4 space-y-3 relative">
                                     <div className="absolute left-8 top-4 bottom-4 w-0.5 bg-slate-800"></div>
-                                    
+
                                     <div className="relative flex items-center gap-4 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-sm">
                                         <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-black font-bold text-xs z-10 shadow-lg shadow-green-500/20">✓</div>
                                         <div>
@@ -93,7 +93,7 @@ const Solution: React.FC = () => {
                                     </button>
                                 </div>
                             </div>
-                         </div>
+                        </div>
                     </div>
 
                     {/* Right Column: Text Content */}

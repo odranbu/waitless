@@ -36,9 +36,9 @@ const FaqItem: React.FC<{ item: typeof faqData[0]; isOpen: boolean; onClick: () 
         className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-            <div className="pb-5 text-slate-300">
-                {item.answer}
-            </div>
+          <div className="pb-5 text-slate-300">
+            {item.answer}
+          </div>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-32 bg-slate-900/70">
+    <section id="faq" className="py-12 sm:py-20 bg-slate-900/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-extrabold text-slate-50 tracking-tight sm:text-4xl">

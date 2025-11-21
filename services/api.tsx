@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from '@google/genai';
 
 // Helper to get AI instance or null if key is missing
 const getAI = () => {
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
     
     // Check if key is missing, empty, or is the default placeholder
     if (!apiKey || apiKey.includes('INSERT_YOUR') || apiKey.length < 10) {

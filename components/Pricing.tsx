@@ -17,7 +17,7 @@ const Pricing: React.FC = () => {
     ];
 
     return (
-        <section id="pricing" className="py-20 sm:py-32">
+        <section id="pricing" className="py-12 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl font-extrabold text-slate-50 tracking-tight sm:text-4xl">Simple, Transparent Pricing</h2>
@@ -31,21 +31,21 @@ const Pricing: React.FC = () => {
                         <h3 className="text-2xl font-bold text-purple-300">5 Days Free Trial</h3>
                         <p className="text-slate-300 mt-2">Full access, no credit card required to sign up. Experience the full power of WaitLess risk-free.</p>
                         <ul className="mt-6 space-y-2">
-                           {features.map(feature => (
-                               <li key={feature} className="flex items-center text-slate-200">
-                                   <CheckIcon />
-                                   <span>{feature}</span>
-                               </li>
-                           ))}
+                            {features.map(feature => (
+                                <li key={feature} className="flex items-center text-slate-200">
+                                    <CheckIcon />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="lg:col-span-2 text-center lg:border-l lg:border-slate-700 lg:pl-8">
-                         <p className="text-slate-300">Then just</p>
-                         <p className="text-5xl font-extrabold text-white my-2">$29<span className="text-lg font-medium text-slate-400">/mo</span></p>
-                         <p className="text-slate-400 text-sm">Less than $1 per day for unlimited use.</p>
-                         <CheckoutButton
+                        <p className="text-slate-300">Then just</p>
+                        <p className="text-5xl font-extrabold text-white my-2">$29<span className="text-lg font-medium text-slate-400">/mo</span></p>
+                        <p className="text-slate-400 text-sm">Less than $1 per day for unlimited use.</p>
+                        <CheckoutButton
                             className="w-full mt-6 bg-purple-600 text-white font-semibold rounded-lg px-6 py-3 hover:bg-purple-700 transition duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/30"
-                         >
+                        >
                             Start Your Free Trial
                         </CheckoutButton>
                     </div>

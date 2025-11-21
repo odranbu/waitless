@@ -1,29 +1,29 @@
 import React from 'react';
 
 const testimonials = [
-  {
-    quote: "WaitLess completely transformed how I manage my time. I can't imagine going back to physical lines!",
-    author: "Sarah M.",
-    title: "Premium User",
-    avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/c8d9e0f1-a2b3-c4d5-e6f7-a8b9c0d1e2f3/retail-manager.jpeg",
-  },
-  {
-    quote: "We cut down our peak-hour wait times by half. The analytics are incredibly insightful. I can't recommend it enough.",
-    author: "John S.",
-    title: "Cafe Owner",
-    avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/d9e0f1a2-b3c4-d5e6-f7a8-b9c0d1e2f3a4/cafe-owner.jpeg",
-  },
-  {
-    quote: "A lifesaver for parents! We can join a restaurant queue from the playground. It makes family days out so much less stressful.",
-    author: "David C.",
-    title: "Parent & User",
-    avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/e0f1a2b3-c4d5-e6f7-a8b9-c0d1e2f3a4b5/doctor-male.jpeg",
-  },
+    {
+        quote: "WaitLess completely transformed how I manage my time. I can't imagine going back to physical lines!",
+        author: "Sarah M.",
+        title: "Premium User",
+        avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/c8d9e0f1-a2b3-c4d5-e6f7-a8b9c0d1e2f3/retail-manager.jpeg",
+    },
+    {
+        quote: "We cut down our peak-hour wait times by half. The analytics are incredibly insightful. I can't recommend it enough.",
+        author: "John S.",
+        title: "Cafe Owner",
+        avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/d9e0f1a2-b3c4-d5e6-f7a8-b9c0d1e2f3a4/cafe-owner.jpeg",
+    },
+    {
+        quote: "A lifesaver for parents! We can join a restaurant queue from the playground. It makes family days out so much less stressful.",
+        author: "David C.",
+        title: "Parent & User",
+        avatar: "https://storage.googleapis.com/aistudio-hosting/workspace-assets/e0f1a2b3-c4d5-e6f7-a8b9-c0d1e2f3a4b5/doctor-male.jpeg",
+    },
 ];
 
 const Testimonials: React.FC = () => {
     return (
-        <section id="testimonials" className="py-20 sm:py-32 bg-slate-900/70">
+        <section id="testimonials" className="py-12 sm:py-20 bg-slate-900/70">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl font-extrabold text-slate-50 tracking-tight sm:text-4xl">

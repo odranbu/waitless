@@ -35,7 +35,7 @@ const CheckCircleIcon: React.FC = () => (
 
 const Features: React.FC = () => {
     return (
-        <section id="features" className="py-20 sm:py-32">
+        <section id="features" className="py-12 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl font-extrabold text-slate-50 tracking-tight sm:text-4xl">WaitLess App: Core Features</h2>

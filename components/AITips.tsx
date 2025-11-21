@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const LightbulbIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-indigo-400">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.311a7.5 7.5 0 0 1-7.5 0c.407.02.813.04 1.224.061a4.5 4.5 0 0 1 4.5 0c.411-.02.817-.04 1.224-.061ZM12 6a2.25 2.25 0 0 1 2.25 2.25v3.375c0 .621-.504 1.125-1.125 1.125h-2.25c-.621 0-1.125-.504-1.125-1.125V8.25A2.25 2.25 0 0 1 12 6Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.311a7.5 7.5 0 0 1-7.5 0c.407.02.813.04 1.224.061a4.5 4.5 0 0 1 4.5 0c.411-.02.817-.04 1.224-.061ZM12 6a2.25 2.25 0 0 1 2.25 2.25v3.375c0 .621-.504 1.125-1.125 1.125h-2.25c-.621 0-1.125-.504-1.125-1.125V8.25A2.25 2.25 0 0 1 12 6Z" />
     </svg>
 );
 
@@ -27,9 +27,9 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
             setError('Please enter your business type.');
             return;
         }
-        
+
         const currentGenerationId = ++generationId.current;
-        
+
         setError('');
         setTip('');
         setLoading(true);
@@ -38,20 +38,20 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
         try {
             // Attempt real fetch
             const response = await fetch(`/api/ai/tip?businessType=${encodeURIComponent(business)}`);
-            
+
             // Check if we are in a demo environment (static fetch returns 404 or HTML)
             const contentType = response.headers.get("content-type");
             if (!response.ok || (contentType && contentType.includes("text/html"))) {
-                 throw new Error('Demo Mode');
+                throw new Error('Demo Mode');
             }
 
             // FIX: Correctly read and decode the streaming response on the client.
             const reader = response.body!.getReader();
             const decoder = new TextDecoder();
             let fullTip = '';
-            
-            while(true) {
-                if (generationId.current !== currentGenerationId) break; 
+
+            while (true) {
+                if (generationId.current !== currentGenerationId) break;
                 const { done, value } = await reader.read();
                 if (done) break;
                 const chunkText = decoder.decode(value, { stream: true });
@@ -62,15 +62,15 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
         } catch (e: any) {
             // DEMO FALLBACK logic for preview environment
             if (generationId.current === currentGenerationId) {
-                 // Simulate stream for demo
-                 const demoTip = `(Demo) For a ${business}, try implementing a digital sign-in kiosk to reduce perceived wait times by 20% and capture customer data effortlessly.`;
-                 let currentText = "";
-                 for (const char of demoTip) {
-                     if (generationId.current !== currentGenerationId) break;
-                     await new Promise(r => setTimeout(r, 20));
-                     currentText += char;
-                     setTip(currentText);
-                 }
+                // Simulate stream for demo
+                const demoTip = `(Demo) For a ${business}, try implementing a digital sign-in kiosk to reduce perceived wait times by 20% and capture customer data effortlessly.`;
+                let currentText = "";
+                for (const char of demoTip) {
+                    if (generationId.current !== currentGenerationId) break;
+                    await new Promise(r => setTimeout(r, 20));
+                    currentText += char;
+                    setTip(currentText);
+                }
             }
         } finally {
             if (generationId.current === currentGenerationId) {
@@ -82,7 +82,7 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
     const handleFormSubmit = () => {
         generateTip(businessType);
     };
-    
+
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             handleFormSubmit();
@@ -90,10 +90,10 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
     };
 
     const handleExampleClick = (business: string) => {
-      setBusinessType(business);
-      generateTip(business);
+        setBusinessType(business);
+        generateTip(business);
     }
-    
+
     // Automatically generate tip if businessType is passed as a prop
     useEffect(() => {
         if (initialBusinessType) {
@@ -109,7 +109,7 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
     }, []);
 
     return (
-        <section id="ai-tips" className="bg-transparent py-20 sm:py-32">
+        <section id="ai-tips" className="bg-transparent py-12 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className="text-base font-semibold text-indigo-400 tracking-wide uppercase">AI-Powered Insights</h2>
@@ -152,8 +152,8 @@ const AITips: React.FC<AITipsProps> = ({ businessType: initialBusinessType }) =>
                             ) : 'Get My Tip'}
                         </button>
                     </div>
-                     {error && <p className="mt-2 text-sm text-red-400 text-center">{error}</p>}
-                     <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                    {error && <p className="mt-2 text-sm text-red-400 text-center">{error}</p>}
+                    <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                         <span className="text-sm text-slate-400 mr-2">Or try an example:</span>
                         {exampleBusinesses.map((name) => (
                             <button
