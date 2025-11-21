@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-slate-900 text-slate-300;
+    /* Prevent horizontal scrollbar from 3D effects */
+    overflow-x: hidden;
+  }
+  
+  select, textarea, input {
+      @apply bg-slate-800/50 border-slate-600 text-slate-200 ring-offset-slate-900 focus:ring-purple-500 focus:outline-none;
+  }
+}
+
+/* 
+   PERFORMANCE FIX: 
+   Moved the aurora background to a fixed position pseudo-element 
+   and used transform/opacity for animation instead of background-position.
+   This runs on the GPU and prevents the "stuck" scroll feeling.
+*/
+.aurora-bg {
+    position: relative;
+    isolation: isolate;
+}
+
+.aurora-bg::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15), transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.15), transparent 40%),
+                      radial-gradient(circle at 20% 80%, rgba(45, 212, 191, 0.15), transparent 40%);
+    background-size: 100% 100%;
+    animation: aurora-spin 60s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform; /* Hint to browser for GPU acceleration */
+    transform: translateZ(0); /* Force creation of a new composite layer */
+}
+
+@keyframes aurora-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-zoom-in {
+  animation: zoom-in 0.5s ease-out forwards;
+}
+
+@keyframes pulse-chat {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(167, 139, 250, 0);
+  }
+}
+.animate-pulse-chat {
+  animation: pulse-chat 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.ai-generated-bg {
+  position: relative;
+  overflow: hidden;
+}
+.ai-generated-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 3s infinite;
+}
+.ai-generated-bg > * {
+  position: relative;
+}
+
+/* For SuccessDashboard Chart */
+@keyframes draw-line {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+}
+.animate-draw-line {
+    animation: draw-line 2s ease-out forwards;
+}
+
+/* For TrustedBy Scroller */
+.scroller {
+    max-width: 100%;
+}
+.scroller__inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+}
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+}
+.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+}
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 1rem)); /* 1rem is half the gap */
+    }
+}
+.skeleton {
+    background-color: theme('colors.slate.700');
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+    50% {
+        opacity: .5;
+    }
+}
